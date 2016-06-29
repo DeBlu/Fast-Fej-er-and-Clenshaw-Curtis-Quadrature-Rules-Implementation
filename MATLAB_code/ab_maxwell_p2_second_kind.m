@@ -60,8 +60,6 @@ n=N:-1:1; m=1:floor(N/2); th=(n*pi)./(N); p=cos(th');
 for k=N:-1:1
 s = sum((sin(2*m-1)*th(k))./(2*m-1));
 w(k) = (4*sin(th(k))/N)*s;
-%s=sum(cos(2*m*th(k))./(4*(m.^2)-1));
-%w(k)=2*(1-2*s)/N;
 end
 r1=(b-a)/2.; r2=(a+b)/2.; ps=r1*p+r2; ws=r1*w;
 %Map [a,b] onto [-1,1]
