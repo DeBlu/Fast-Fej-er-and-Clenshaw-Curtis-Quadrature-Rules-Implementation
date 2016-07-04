@@ -1,0 +1,9 @@
+function a = fejer2(f,N) % coefficients for Feje?r’s second rule
+x = cos(pi*(0:N+2)'/(N+2));
+fx = feval(f,x)/(2*N+4); % f evaluated at these points
+g = fft(fx([1:N+3 N+2:-1:2])); % FFT
+b = [g(1); g(2:N+2)+g(2*N+4:-1:N+4); g(N+3)];
+b(N+1:-2:1) = b(N+1:-2:1)-2*b(N+3);
+b(N:-2:1) = b(N:-2:1)-b(N+2);
+b(1) = b(1)+mod(N+1,2)*b(N+3)+mod(N,2)*b(N+2)/2;
+a = b(1:N+1); % Chebyshev coefficients
